@@ -1,0 +1,21 @@
+{
+    "name": "metaversegamescoin/rz-common",
+    "description": "this package is common files between microservices",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Metaversegamescoin\\RzCommon\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Mohsen Farzadipour",
+            "email": "onemohsen@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    	"php": "^8.1",
+    }
+}
