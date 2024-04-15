@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Metaversegamescoin\RzCommon\DataTransferObjects\State;
 
 use Metaversegamescoin\RzCommon\DataTransferObjects\Country\CountryData;

@@ -1,6 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Metaversegamescoin\RzCommon\DataTransferObjects\User;
+
 use Metaversegamescoin\RzCommon\DataTransferObjects\Country\CountryData;
 use Metaversegamescoin\RzCommon\DataTransferObjects\State\StateData;
 
@@ -22,17 +25,17 @@ class UserData
         public readonly ?string $birth_date,
         public readonly ?string $bio,
 
-        public readonly CountryData $country,
-        public readonly StateData $state,
+        public readonly ?CountryData $country,
+        public readonly ?StateData $state,
     ) {}
 
 
     /**
-     * @param array{id: int, email: string, name: ?string, first_name:string, last_name: string, username: string, email_verified_at: string, referrer_user_id: string, sex: string, status: string, mobile: string, gender: string, birth_date: string, bio: string,
-     *      country: array{
+     * @param array{id: int, email: string, name: ?string, first_name: ?string, last_name: ?string, username: ?string, email_verified_at: ?string, referrer_user_id: ?int, sex: ?string, status: ?string, mobile: ?string, gender: ?string, birth_date: ?string, bio: ?string,
+     *      country: ?array{
      *          id: int, sortname: string, name: string, phonecode: int,
      *      }, 
-     *      state: array{
+     *      state: ?array{
      *          id: int, name: string,
      *      },
      * } $data
@@ -43,29 +46,29 @@ class UserData
         return new static(
             $data['id'],
             $data['email'],
-            $data['name'],
-            $data['first_name'],
-            $data['last_name'],
-            $data['username'],
-            $data['email_verified_at'],
-            $data['referrer_user_id'],
-            $data['sex'],
-            $data['status'],
-            $data['mobile'],
-            $data['gender'],
-            $data['birth_date'],
-            $data['bio'],
+            $data['name'] ?? null,
+            $data['first_name'] ?? null,
+            $data['last_name'] ?? null,
+            $data['username'] ?? null,
+            $data['email_verified_at'] ?? null,
+            $data['referrer_user_id'] ?? null,
+            $data['sex'] ?? null,
+            $data['status'] ?? null,
+            $data['mobile'] ?? null,
+            $data['gender'] ?? null,
+            $data['birth_date'] ?? null,
+            $data['bio'] ?? null,
 
-            new CountryData(
+            isset($data['country']) ? new CountryData(
                 id: $data['country']['id'],
                 sortname: $data['country']['sortname'],
                 name: $data['country']['name'],
                 phonecode: $data['country']['phonecode'] 
-            ),
-            new StateData(
+            ) : null,
+            isset($data['state']) ? new StateData(
                 id: $data['state']['id'],
                 name: $data['state']['name']
-            ),
+            ) : null,
         );
     }
 }

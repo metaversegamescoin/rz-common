@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Metaversegamescoin\RzCommon\DataTransferObjects\User;
 
 class UserActToAnotherUserData
@@ -10,7 +12,7 @@ class UserActToAnotherUserData
     ) {}
 
     /**
-     * @param array{sourceUserId: int,destinationUserId:int} $data
+     * @param array{sourceUserId: int, destinationUserId:int} $data
      * @return UserData
      */
     public static function fromArray(array $data): self
