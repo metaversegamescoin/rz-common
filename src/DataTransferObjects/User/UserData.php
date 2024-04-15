@@ -1,21 +1,71 @@
 <?php
 
 namespace Metaversegamescoin\RzCommon\DataTransferObjects\User;
+use Metaversegamescoin\RzCommon\DataTransferObjects\Country\CountryData;
+use Metaversegamescoin\RzCommon\DataTransferObjects\State\StateData;
 
 class UserData
 {
     public function __construct(
-        public readonly int $userId,
+        public readonly int $id,
+        public readonly string $email,
+        public readonly ?string $name,
+        public readonly ?string $first_name,
+        public readonly ?string $last_name,
+        public readonly ?string $username,
+        public readonly ?string $email_verified_at,
+        public readonly ?int $referrer_user_id,
+        public readonly ?string $sex,
+        public readonly ?string $status,
+        public readonly ?string $mobile,
+        public readonly ?string $gender,
+        public readonly ?string $birth_date,
+        public readonly ?string $bio,
+
+        public readonly CountryData $country,
+        public readonly StateData $state,
     ) {}
 
+
     /**
-     * @param array{userId: int} $data
+     * @param array{id: int, email: string, name: ?string, first_name:string, last_name: string, username: string, email_verified_at: string, referrer_user_id: string, sex: string, status: string, mobile: string, gender: string, birth_date: string, bio: string,
+     *      country: array{
+     *          id: int, sortname: string, name: string, phonecode: int,
+     *      }, 
+     *      state: array{
+     *          id: int, name: string,
+     *      },
+     * } $data
      * @return UserData
      */
     public static function fromArray(array $data): self
     {
         return new static(
-            $data['userId'],
+            $data['id'],
+            $data['email'],
+            $data['name'],
+            $data['first_name'],
+            $data['last_name'],
+            $data['username'],
+            $data['email_verified_at'],
+            $data['referrer_user_id'],
+            $data['sex'],
+            $data['status'],
+            $data['mobile'],
+            $data['gender'],
+            $data['birth_date'],
+            $data['bio'],
+
+            new CountryData(
+                id: $data['country']['id'],
+                sortname: $data['country']['sortname'],
+                name: $data['country']['name'],
+                phonecode: $data['country']['phonecode'] 
+            ),
+            new StateData(
+                id: $data['state']['id'],
+                name: $data['state']['name']
+            ),
         );
     }
 }
