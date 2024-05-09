@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace Metaversegamescoin\RzCommon\DataTransferObjects\User;
 
-class UserUpdatePassword
+class UserUpdateAlternativeEmailData
 {
     public function __construct(
-        public readonly string $password,
+        public readonly int $userId,
+        public readonly string $alternativeEmail,
     ) {}
 
 
