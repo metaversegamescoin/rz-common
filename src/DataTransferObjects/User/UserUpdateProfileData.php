@@ -11,6 +11,8 @@ class UserUpdateProfileData
         public readonly int $stateId,
         public readonly int $countryId,
         public readonly string $name,
+        public readonly string $stateName,
+        public readonly string $countryName,
     ) {}
 
 
