@@ -7,6 +7,7 @@ namespace Metaversegamescoin\RzCommon\DataTransferObjects\Post;
 class PostData
 {
     public function __construct(
+        public readonly string $username,
         public readonly string $visibility,
         public readonly ?string $message,
         public readonly ?string $images,
@@ -19,6 +20,7 @@ class PostData
     public static function fromArray(array $data): self
     {
         return new static(
+            $data['username'],
             $data['visibility'],
             $data['message'] ?? null,
                 $data['images'] ?? null,
