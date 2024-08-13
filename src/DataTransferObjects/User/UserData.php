@@ -11,7 +11,7 @@ class UserData
 {
     public function __construct(
         public readonly int $id,
-        public readonly string $email,
+        public readonly ?string $email,
         public readonly ?string $name,
         public readonly ?string $first_name,
         public readonly ?string $last_name,
@@ -45,7 +45,7 @@ class UserData
     {
         return new static(
             $data['id'],
-            $data['email'],
+            $data['email']??null,
             $data['name'] ?? null,
             $data['first_name'] ?? null,
             $data['last_name'] ?? null,
