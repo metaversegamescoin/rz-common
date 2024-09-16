@@ -59,7 +59,7 @@ class UserData
             $data['gender'] ?? null,
             $data['birth_date'] ?? null,
             $data['bio'] ?? null,
-            is_bool($data['is_banned']) ?$data['is_banned']: null,
+            is_bool($data['is_banned']??null) ?$data['is_banned']: null,
 
             isset($data['country']) ? new CountryData(
                 id: $data['country']['id'],
