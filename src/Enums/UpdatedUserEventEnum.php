@@ -9,5 +9,6 @@ enum UpdatedUserEventEnum : string
     case AVATARIMAGE = 'avatar-image';
     case UPDATE_STATUS = 'update-status';
     case UPDATE_IS_BANNED = 'update-is-banned';
+    case UPDATE_PASSWORD = 'update-password';
 
 }
