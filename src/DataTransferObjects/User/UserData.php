@@ -25,6 +25,7 @@ class UserData
         public readonly ?string $birth_date,
         public readonly ?string $bio,
         public readonly ?bool $is_banned,
+        public readonly ?bool $is_set_password,
 
         public readonly ?CountryData $country,
         public readonly ?StateData $state,
@@ -32,7 +33,10 @@ class UserData
 
 
     /**
-     * @param array{id: int, email: string, name: ?string, first_name: ?string, last_name: ?string, username: ?string, email_verified_at: ?string, referrer_user_id: ?int, sex: ?string, status: ?string, mobile: ?string, gender: ?string, birth_date: ?string, bio: ?string,is_banned: ?bool,
+     * @param array{id: int, email: string, name: ?string, first_name: ?string, last_name: ?string,
+     *      username: ?string, email_verified_at: ?string, referrer_user_id: ?int, sex: ?string,
+     *      status: ?string, mobile: ?string, gender: ?string, birth_date: ?string, bio: ?string,
+     *     is_banned: ?bool,is_set_password: ?bool,
      *      country: ?array{
      *          id: int, sortname: string, name: string, phonecode: int,
      *      }, 
@@ -60,6 +64,7 @@ class UserData
             $data['birth_date'] ?? null,
             $data['bio'] ?? null,
             is_bool($data['is_banned']??null) ?$data['is_banned']: null,
+            is_bool($data['is_set_password']??null) ?$data['is_set_password']: null,
 
             isset($data['country']) ? new CountryData(
                 id: $data['country']['id'],
