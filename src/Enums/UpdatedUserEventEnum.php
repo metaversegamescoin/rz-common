@@ -10,5 +10,6 @@ enum UpdatedUserEventEnum : string
     case UPDATE_STATUS = 'update-status';
     case UPDATE_IS_BANNED = 'update-is-banned';
     case UPDATE_PASSWORD = 'update-password';
+    case UPDATE_USERNAME = 'update-username';
 
 }
