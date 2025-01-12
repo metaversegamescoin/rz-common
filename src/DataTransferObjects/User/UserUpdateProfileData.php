@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Metaversegamescoin\RzCommon\DataTransferObjects\User;
 
+use Metaversegamescoin\RzCommon\Enums\UserLocalEnum;
+
 class UserUpdateProfileData
 {
     public function __construct(
@@ -13,6 +15,9 @@ class UserUpdateProfileData
         public readonly string $name,
         public readonly string $stateName,
         public readonly string $countryName,
+        public readonly UserLocalEnum $local,
+        public readonly ?int $timezoneId,
+        public readonly ?string $timezoneOffset,
     ) {}
 
 
