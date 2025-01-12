@@ -16,8 +16,8 @@ class UserUpdateProfileData
         public readonly string $stateName,
         public readonly string $countryName,
         public readonly UserLocalEnum $local,
-        public readonly ?int $timezoneId,
-        public readonly ?string $timezoneOffset,
+        public readonly ?int $timezoneId = null,
+        public readonly ?string $timezoneOffset =null,
     ) {}
 
 
