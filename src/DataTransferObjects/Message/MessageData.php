@@ -16,7 +16,9 @@ class MessageData
         public readonly ?string $images,
     ) {}
 
-
+    /**
+     * @return MessageData
+     */
     public static function fromArray(array $data): self
     {
         return new static(

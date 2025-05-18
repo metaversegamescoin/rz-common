@@ -9,7 +9,7 @@ use Metaversegamescoin\RzCommon\Enums\UserLocalEnum;
 class UserUpdateProfileData
 {
     public function __construct(
-        public readonly int $userId,
+        public readonly string $userUlid,
         public readonly int $stateId,
         public readonly int $countryId,
         public readonly string $name,

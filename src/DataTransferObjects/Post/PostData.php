@@ -11,22 +11,24 @@ class PostData
         public readonly string $visibility,
         public readonly ?string $message,
         public readonly ?string $images,
-        public readonly ?bool $is_locked_comments,
-        public readonly ?bool $is_locked_post,
-        public readonly ?array $post_data,
+        public readonly ?bool $isLockedComments,
+        public readonly ?bool $isLockedPost,
+        public readonly ?array $postData,
     ) {}
 
-
+    /**
+     * @return PostData
+     */
     public static function fromArray(array $data): self
     {
         return new static(
-            $data['username'],
-            $data['visibility'],
-            $data['message'] ?? null,
-                $data['images'] ?? null,
-            $data['is_locked_comments'] ?? false,
-            $data['is_locked_post'] ?? false,
-            $data['post_data'] ?? [],
+            username: $data['username'],
+            visibility: $data['visibility'],
+            message: $data['message'] ?? null,
+            images: $data['images'] ?? null,
+            isLockedComments: $data['is_locked_comments'] ?? false,
+            isLockedPost: $data['is_locked_post'] ?? false,
+            postData: $data['post_data'] ?? [],
         );
     }
 }

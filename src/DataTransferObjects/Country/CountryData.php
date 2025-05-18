@@ -8,22 +8,21 @@ class CountryData
 {
     public function __construct(
         public readonly int $id,
-        public readonly string $sortname,
+        public readonly string $sortName,
         public readonly string $name,
-        public readonly int $phonecode,
+        public readonly int $phoneCode,
     ) {}
 
     /**
-     * @param array{id: int,sortname: string,name: string,phonecode: int} $data
      * @return CountryData
      */
     public static function fromArray(array $data): self
     {
         return new static(
-            $data['id'],
-            $data['sortname'],
-            $data['name'],
-            $data['phonecode'],
+            id: $data['id'],
+            sortName: $data['sortname'],
+            name: $data['name'],
+            phoneCode: $data['phonecode'],
         );
     }
 }

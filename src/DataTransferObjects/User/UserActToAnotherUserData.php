@@ -7,19 +7,18 @@ namespace Metaversegamescoin\RzCommon\DataTransferObjects\User;
 class UserActToAnotherUserData
 {
     public function __construct(
-        public readonly int $sourceUserId,
-        public readonly int $destinationUserId,
+        public readonly string $sourceUserUlid,
+        public readonly string $destinationUserUlid,
     ) {}
 
     /**
-     * @param array{sourceUserId: int, destinationUserId:int} $data
      * @return UserData
      */
     public static function fromArray(array $data): self
     {
         return new static(
-            $data['sourceUserId'],
-            $data['destinationUserId'],
+            sourceUserUlid: $data['sourceUserUlid'],
+            destinationUserUlid: $data['destinationUserUlid'],
         );
     }
 }

@@ -10,22 +10,22 @@ use Metaversegamescoin\RzCommon\DataTransferObjects\State\StateData;
 class UserData
 {
     public function __construct(
-        public readonly int $id,
+        public readonly string $ulid,
         public readonly ?string $email,
         public readonly ?string $name,
-        public readonly ?string $first_name,
-        public readonly ?string $last_name,
+        public readonly ?string $firstName,
+        public readonly ?string $lastName,
         public readonly ?string $username,
-        public readonly ?string $email_verified_at,
-        public readonly ?int $referrer_user_id,
+        public readonly ?string $emailVerifiedAt,
+        public readonly ?string $referrerUserUlid,
         public readonly ?string $sex,
         public readonly ?string $status,
         public readonly ?string $mobile,
         public readonly ?string $gender,
-        public readonly ?string $birth_date,
+        public readonly ?string $birthDate,
         public readonly ?string $bio,
-        public readonly ?bool $is_banned,
-        public readonly ?bool $is_set_password,
+        public readonly ?bool $isBanned,
+        public readonly ?bool $isSetPassword,
 
         public readonly ?CountryData $country,
         public readonly ?StateData $state,
@@ -33,46 +33,35 @@ class UserData
 
 
     /**
-     * @param array{id: int, email: string, name: ?string, first_name: ?string, last_name: ?string,
-     *      username: ?string, email_verified_at: ?string, referrer_user_id: ?int, sex: ?string,
-     *      status: ?string, mobile: ?string, gender: ?string, birth_date: ?string, bio: ?string,
-     *     is_banned: ?bool,is_set_password: ?bool,
-     *      country: ?array{
-     *          id: int, sortname: string, name: string, phonecode: int,
-     *      }, 
-     *      state: ?array{
-     *          id: int, name: string,
-     *      },
-     * } $data
      * @return UserData
      */
     public static function fromArray(array $data): self
     {
         return new static(
-            $data['id'],
-            $data['email']??null,
-            $data['name'] ?? null,
-            $data['first_name'] ?? null,
-            $data['last_name'] ?? null,
-            $data['username'] ?? null,
-            $data['email_verified_at'] ?? null,
-            $data['referrer_user_id'] ?? null,
-            $data['sex'] ?? null,
-            $data['status'] ?? null,
-            $data['mobile'] ?? null,
-            $data['gender'] ?? null,
-            $data['birth_date'] ?? null,
-            $data['bio'] ?? null,
-            is_bool($data['is_banned']??null) ?$data['is_banned']: null,
-            is_bool($data['is_set_password']??null) ?$data['is_set_password']: null,
+            ulid: $data['ulid'],
+            email: $data['email']??null,
+            name: $data['name'] ?? null,
+            firstName: $data['first_name'] ?? null,
+            lastName: $data['last_name'] ?? null,
+            username: $data['username'] ?? null,
+            emailVerifiedAt: $data['email_verified_at'] ?? null,
+            referrerUserUlid: $data['referrer_user_id'] ?? null,
+            sex: $data['sex'] ?? null,
+            status: $data['status'] ?? null,
+            mobile: $data['mobile'] ?? null,
+            gender: $data['gender'] ?? null,
+            birthDate: $data['birth_date'] ?? null,
+            bio: $data['bio'] ?? null,
+            isBanned: is_bool($data['is_banned']??null) ?$data['is_banned']: null,
+            isSetPassword: is_bool($data['is_set_password']??null) ?$data['is_set_password']: null,
 
-            isset($data['country']) ? new CountryData(
+            country: isset($data['country']) ? new CountryData(
                 id: $data['country']['id'],
-                sortname: $data['country']['sortname'],
+                sortName: $data['country']['sortname'],
                 name: $data['country']['name'],
-                phonecode: $data['country']['phonecode'] 
+                phoneCode: $data['country']['phonecode'] 
             ) : null,
-            isset($data['state']) ? new StateData(
+            state: isset($data['state']) ? new StateData(
                 id: $data['state']['id'],
                 name: $data['state']['name']
             ) : null,
