@@ -10,7 +10,7 @@ class MessageData
         public readonly string $title,
         public readonly int $createdBy,
         public readonly array $recipients,
-        public readonly array $modelData,
+        public readonly MessageModelData $modelData,
         public readonly ?string $messageId,
         public readonly ?string $content,
         public readonly ?string $images,
@@ -25,7 +25,7 @@ class MessageData
             title: $data['title'],
             createdBy: $data['created_by'],
             recipients: $data['recipients'],
-            modelData: $data['model_data']??[],
+            modelData: MessageModelData::fromArray($data['model_data']??[]),
             messageId: $data['message_id']??null,
             content: $data['content'] ?? null,
             images: $data['images'] ?? null
