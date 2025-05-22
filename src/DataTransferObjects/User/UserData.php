@@ -45,7 +45,7 @@ class UserData
             lastName: $data['last_name'] ?? null,
             username: $data['username'] ?? null,
             emailVerifiedAt: $data['email_verified_at'] ?? null,
-            referrerUserUlid: $data['referrer_user_id'] ?? null,
+            referrerUserUlid: $data['referrer_user_ulid'] ?? null,
             sex: $data['sex'] ?? null,
             status: $data['status'] ?? null,
             mobile: $data['mobile'] ?? null,
