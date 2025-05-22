@@ -23,7 +23,7 @@ class MessageData
             title: $data['title'],
             createdBy: $data['created_by'],
             recipients: $data['recipients'],
-            modelData: $data['model_data']??[],
+            modelData: $data['model_data'],
             messageId: $data['message_id']??null,
             content: $data['content'] ?? null,
             images: $data['images'] ?? null
