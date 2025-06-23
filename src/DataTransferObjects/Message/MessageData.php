@@ -8,7 +8,7 @@ class MessageData
 {
     public function __construct(
         public readonly string $title,
-        public readonly int $createdBy,
+        public readonly string $createdByUlid,
         public readonly array $recipients,
         public readonly MessageModelData $modelData,
         public readonly ?string $messageId,
@@ -23,7 +23,7 @@ class MessageData
     {
         return new static(
             title: $data['title'],
-            createdBy: $data['created_by'],
+            createdByUlid: $data['created_by_ulid'],
             recipients: $data['recipients'],
             modelData: MessageModelData::fromArray($data['model_data']??[]),
             messageId: $data['message_id']??null,
