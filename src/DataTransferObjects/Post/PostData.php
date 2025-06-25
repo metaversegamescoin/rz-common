@@ -10,7 +10,7 @@ class PostData
         public readonly string $username,
         public readonly string $visibility,
         public readonly ?string $message,
-        public readonly ?string $images,
+        public readonly ?array $images,
         public readonly ?bool $isLockedComments,
         public readonly ?bool $isLockedPost,
         public readonly ?array $postData,
