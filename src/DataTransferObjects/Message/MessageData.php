@@ -13,7 +13,7 @@ class MessageData
         public readonly MessageModelData $modelData,
         public readonly ?string $messageId,
         public readonly ?string $content,
-        public readonly ?string $images,
+        public readonly ?array $images,
     ) {}
 
     /**
